@@ -7,9 +7,18 @@ on:
 
 jobs:
   regularjob:
-    runs-on: ubuntu-latest
+    # runs-on: ubuntu-latest
+    runs-on: docker
     steps:
     - run: echo "${{ github.actor }}"
+    - name: Code Coverage Summary Report
+      uses: irongut/CodeCoverageSummary@v1.0.2
+      # uses: joshjohanning/CodeCoverageSummary@v1.0.2
+      with:
+        filename: coverage/coverage.cobertura.xml
+        badge: true
+        format: 'markdown'
+        output: 'both'
     - run: echo "${{ secrets.TEST_SECRET }}"
     - run: | 
         echo ${{ github.sha }}
@@ -18,9 +27,9 @@ jobs:
           --header "Authorization: Bearer ${{ secrets.github_token }}" | jq -c '.files[].filename'
     
   container:
-    # runs-on: [self-hosted, azure]
+    runs-on: [self-hosted, azure]
     # runs-on: ubuntu-latest
-    runs-on: docker
+    # runs-on: docker
     container:
       # image: 'ubuntu:latest'
       image: 'ghcr.io/joshjohanning-org/container-job-test:17' # 8 works, 9 doesn,t, 3 has USER 1001, 4 does not..
