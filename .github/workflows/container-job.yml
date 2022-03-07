@@ -31,7 +31,7 @@ jobs:
     # runs-on: docker
     container:
       # image: 'ubuntu:latest'
-      image: 'ghcr.io/joshjohanning-org/container-job-test:17' # 8 works, 9 doesn,t, 3 has USER 1001, 4 does not..
+      image: 'ghcr.io/${{ github.repository }}:latest' # 17 works, 8 works, 9 doesn,t, 3 has USER 1001, 4 does not..
       credentials:
          username: ${{ github.ref }}
          password: ${{ secrets.GITHUB_TOKEN }}
@@ -40,13 +40,20 @@ jobs:
 
     steps:
     - uses: actions/checkout@main
-    - run: ls
-    - name: test1
-      run: |
-        echo "$actor"
-    - name: test2
+    - name: run ls
+      run: ls
+    # all of these below work
+    - name: print actor env var
+      run: echo "$actor"
+    - name: print directly github context
       run: echo "${{ github.actor }}"
-    - name: test secret
+    - name: print repo secret
       run: echo "${{ secrets.TEST_SECRET }}"
-
-        
+    - name: print job env var
+      run: echo "$testjob"
+    - name: print root env var
+      run: echo "$test"
+    - name: condition with root env var
+      if: ${{ env.test == 'value' }}
+      run: echo "$test" 
+      
