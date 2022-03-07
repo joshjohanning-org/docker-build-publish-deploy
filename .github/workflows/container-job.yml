@@ -8,7 +8,7 @@ on:
 jobs:
   regularjob:
     # runs-on: ubuntu-latest
-    runs-on: docker
+    runs-on: windows-latest
     steps:
     - run: echo "${{ github.actor }}"
     - name: Code Coverage Summary Report
