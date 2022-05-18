@@ -1,2 +1,3 @@
 rm -rf folder
 docker build . Dockerfile ....
+test
