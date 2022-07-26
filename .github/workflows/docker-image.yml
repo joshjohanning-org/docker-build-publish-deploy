@@ -8,9 +8,7 @@ on:
   pull_request:
     branches: [ main ]
   workflow_dispatch:
-  
-env:
-  image-repository: ghcr.io
+
 
 jobs:
   build:
@@ -18,7 +16,7 @@ jobs:
     uses: joshjohanning-org/reusable-workflows/.github/workflows/docker-build.yml@multiple-jobs
     with:
       runs-on: k8s-runner
-      image-repository: ${{ env.image-repository }}
+      image-repository: ghcr.io
       image-name: ${{ github.repository }}
       image-tag: ${{ github.run_number }}
       dockerfile-path: Dockerfile
