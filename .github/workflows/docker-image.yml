@@ -11,8 +11,8 @@ on:
 
 
 jobs:
-  docker1:
-    name: docker2
+  docker:
+    name: docker
     uses: joshjohanning-org/reusable-workflows/.github/workflows/docker-build.yml@multiple-jobs
     with:
       runs-on: k8s-runner
