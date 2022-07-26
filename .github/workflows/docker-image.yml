@@ -15,7 +15,7 @@ jobs:
     name: docker
     uses: joshjohanning-org/reusable-workflows/.github/workflows/docker-build.yml@multiple-jobs
     with:
-      runs-on: k8s-runner
+      runs-on: ubuntu-latest
       image-repository: ghcr.io
       image-name: ${{ github.repository }}
       image-tag: ${{ github.run_number }}
