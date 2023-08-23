@@ -12,7 +12,7 @@ jobs:
   build:
     uses: joshjohanning-org/reusable-workflows/.github/workflows/docker-build.yml@v1.0.1
     with:
-      runs-on: k8s-runner
+      runs-on: ubuntu-latest
       image-repository: ${{ vars.IMAGE_REPOSITORY }}
       image-name: ${{ github.repository }}
       image-tag: ${{ github.run_number }}
