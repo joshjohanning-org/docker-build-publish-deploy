@@ -10,7 +10,7 @@ on:
 
 jobs:
   build:
-    uses: joshjohanning-org/reusable-workflows/.github/workflows/docker-build.yml@v1.0.2
+    uses: joshjohanning-org/reusable-workflows/.github/workflows/docker-build.yml@v1.0.4
     with:
       runs-on: ubuntu-latest
       image-repository: ${{ vars.IMAGE_REPOSITORY }}
