@@ -13,7 +13,7 @@ env:
 
 jobs:
   build:
-    uses: joshjohanning-org/reusable-workflows/.github/workflows/docker-build.yml@main
+    uses: joshjohanning-org/reusable-workflows/.github/workflows/docker-build.yml@v1.0.1
     with:
       runs-on: k8s-runner
       image-repository: ${{ env.image-repository }}
