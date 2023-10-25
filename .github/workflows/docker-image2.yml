@@ -5,12 +5,6 @@ on:
 
 jobs:
   build:
-    uses: joshjohanning-org/reusable-workflows/.github/workflows/docker-build.yml@v1.0.4
-    with:
-      runs-on: ubuntu-latest
-      image-repository: ${{ vars.IMAGE_REPOSITORY }}
-      image-name: ${{ github.repository }}
-      image-tag: ${{ github.run_number }}
-      dockerfile-path: Dockerfile
+    uses: joshjohanning-org/reusable-workflows/.github/workflows/secrets-sample.yml@v1.0.4
     secrets: inherit
     
